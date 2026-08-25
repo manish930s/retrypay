@@ -9,7 +9,16 @@ import {
   TriggerResponse,
 } from './types';
 
-const API_BASE = '/api/v1';
+export function resolveApiBase(explicitBase?: string): string {
+  const configuredBase = explicitBase ?? import.meta.env.VITE_API_BASE_URL;
+  const normalized = configuredBase?.trim();
+  if (!normalized) {
+    return '/api/v1';
+  }
+  return normalized.replace(/\/+$/, '');
+}
+
+const API_BASE = resolveApiBase();
 
 async function fetchJSON<T>(url: string, options?: RequestInit): Promise<T> {
   const resp = await fetch(`${API_BASE}${url}`, {
@@ -91,4 +100,3 @@ export const api = {
       body: JSON.stringify({ preview_token: previewToken, medium }),
     }),
 };
-
