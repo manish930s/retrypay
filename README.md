@@ -116,6 +116,7 @@ Detailed technical documentation is organized in [`docs/`](docs/):
 | :--- | :--- |
 | **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)** | Complete system architecture, state machine, authority hierarchy, and life of a failed payment |
 | **[`docs/SETUP.md`](docs/SETUP.md)** | End-to-end setup guide, environment configuration, database routing, and CLI scripts |
+| **[`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)** | Deployment options for GitHub Pages static dashboard and full-stack backend+frontend hosting |
 | **[`docs/SAFETY.md`](docs/SAFETY.md)** | Non-negotiable safety rules, DPDP consent gating, secret handling, and test-mode isolation |
 | **[`docs/DOMAIN_CONTRACTS.md`](docs/DOMAIN_CONTRACTS.md)** | Data models, DTO schemas, entity lifecycle states, and API contracts |
 | **[`docs/EVALUATION.md`](docs/EVALUATION.md)** | Counterfactual 3-arm simulation protocol and causal statistical estimation rules |
