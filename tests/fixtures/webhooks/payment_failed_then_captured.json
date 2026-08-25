@@ -1,0 +1,21 @@
+{
+  "entity": "event",
+  "account_id": "acc_test_merchant_01",
+  "event": "payment.captured",
+  "contains": ["payment"],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_retry_success_001",
+        "entity": "payment",
+        "amount": 150000,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_dup_001",
+        "method": "netbanking",
+        "captured": true
+      }
+    }
+  },
+  "created_at": 1771761900
+}

@@ -1,0 +1,21 @@
+{
+  "entity": "event",
+  "account_id": "acc_test_merchant_01",
+  "event": "payment.captured",
+  "contains": ["payment"],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_cap_001",
+        "entity": "payment",
+        "amount": 299900,
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_test_001",
+        "method": "upi",
+        "captured": true
+      }
+    }
+  },
+  "created_at": 1771761700
+}

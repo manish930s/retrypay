@@ -1,0 +1,22 @@
+{
+  "entity": "event",
+  "account_id": "acc_test_merchant_01",
+  "event": "payment.failed",
+  "contains": ["payment"],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_late_fail_002",
+        "entity": "payment",
+        "amount": 299900,
+        "currency": "INR",
+        "status": "failed",
+        "order_id": "order_test_001",
+        "method": "upi",
+        "error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "error_description": "Late failed attempt delivered out of order"
+      }
+    }
+  },
+  "created_at": 1771761950
+}

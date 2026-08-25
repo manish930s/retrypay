@@ -1,0 +1,17 @@
+{
+  "entity": "event",
+  "account_id": "acc_test_merchant_01",
+  "event": "refund.created",
+  "contains": ["refund"],
+  "payload": {
+    "refund": {
+      "entity": {
+        "id": "rfnd_001",
+        "amount": 5000,
+        "currency": "INR",
+        "payment_id": "pay_cap_001"
+      }
+    }
+  },
+  "created_at": 1771762100
+}

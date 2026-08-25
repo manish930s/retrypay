@@ -1,0 +1,84 @@
+# =============================================================================
+# ReTryPay — Comprehensive .gitignore
+# =============================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+.venv/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Testing, Type Checking & Linting ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+coverage.json
+.mypy_cache/
+.ruff_cache/
+
+# --- Local Databases & SQLite State ---
+data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+retrypay*.db*
+reminder*.db*
+
+# --- Environment, Secrets & Keys ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.cert
+*.crt
+secrets/
+
+# --- Node & Frontend Build Artifacts ---
+node_modules/
+web/node_modules/
+web/dist/
+web/.vite/
+.npm/
+
+# --- Temporary Files, Logs & Scratch ---
+logs/
+*.log
+tmp/
+scratch/
+.system_generated/
+.temp/
+
+# --- OS & Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project

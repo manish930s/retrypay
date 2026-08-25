@@ -1,0 +1,25 @@
+{
+  "entity": "event",
+  "account_id": "acc_test_merchant_01",
+  "event": "payment.failed",
+  "contains": ["payment"],
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_fail_001",
+        "entity": "payment",
+        "amount": 299900,
+        "currency": "INR",
+        "status": "failed",
+        "order_id": "order_test_001",
+        "method": "upi",
+        "error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "error_description": "Payment was timed out by bank gateway",
+        "error_source": "customer",
+        "error_step": "payment_authorization",
+        "error_reason": "payment_failed"
+      }
+    }
+  },
+  "created_at": 1771761600
+}
