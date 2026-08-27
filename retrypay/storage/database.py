@@ -221,6 +221,19 @@ async def init_db(engine: AsyncEngine) -> None:
                     text(f"UPDATE {table} SET source = 'LOCAL_SIMULATION' WHERE source IS NULL;")
                 )
 
+        # Check if audit_events has provider_event_id column
+        cursor_res = await conn.execute(text("PRAGMA table_info(audit_events);"))
+        audit_cols = [row[1] for row in cursor_res.fetchall()]
+        if audit_cols and "provider_event_id" not in audit_cols:
+            alter_sql = "ALTER TABLE audit_events ADD COLUMN provider_event_id VARCHAR(128);"
+            await conn.execute(text(alter_sql))
+            await conn.execute(
+                text(
+                    "CREATE UNIQUE INDEX IF NOT EXISTS ix_audit_events_provider_event_id "
+                    "ON audit_events(provider_event_id);"
+                )
+            )
+
         duplicate_checks: list[tuple[str, str, str]] = [
             ("webhook_events", "source, provider_event_id", "Webhook events"),
             ("orders", "source, order_id", "Orders"),
