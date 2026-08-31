@@ -31,16 +31,17 @@
 flowchart LR
     A["Inbound Webhook\n(payment.failed)"] --> B["HMAC Verifier\n(SHA-256)"]
     B --> C["Event Store\n(Idempotent Dedup)"]
-    D --> E["Deterministic\nPolicy Engine"]
     C --> D["Enrichment &\nContext Lookup"]
+    D --> E["Deterministic\nPolicy Engine"]
     E -->|Eligible| F["ROS Scorer\n(0-100)"]
     E -->|Consent Missing / Fraud| G["MANUAL_REVIEW /\nCLOSED_BLOCKED"]
     E -->|Quiet Hours| H["DEFERRED\n(Scheduled)"]
     F --> I["Payment Link\nProvider"]
     I --> J["Operator Preview &\nSingle-Use Token"]
-    J --> K["Simulated Outreach\n(Test Mode)"]
-    L["Paid Webhook\n(payment.captured)"] --> M["Two-Evidence\nReconciliation"]
-    M --> N["State:\nRECOVERED"]
+    J --> K["Test-Only Outreach\n(Simulated Dispatch)"]
+    L1["Razorpay payment.captured Webhook"] --> M["Two-Evidence Reconciliation"]
+    L2["Razorpay payment_link.paid Webhook"] --> M
+    M --> N["State: RECOVERED"]
 ```
 
 ---

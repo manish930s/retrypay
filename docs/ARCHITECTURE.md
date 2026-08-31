@@ -59,9 +59,10 @@ flowchart TD
     L --> M["PaymentLinkProvider (Create Link)"]
     M --> N["State: LINK_CREATED"]
     N --> O["Operator Preview & Single-Use Token"]
-    O --> P["State: NOTIFIED"]
+    O --> P["Test-Only Outreach (Simulated Dispatch)"]
     
-    Q["Razorpay Webhook (payment.captured / link.paid)"] --> R["Two-Evidence Attribution Reconciliation"]
+    Q1["Razorpay payment.captured Webhook"] --> R["Two-Evidence Reconciliation"]
+    Q2["Razorpay payment_link.paid Webhook"] --> R
     R --> S["State: RECOVERED"]
 ```
 
