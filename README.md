@@ -19,7 +19,7 @@
 - **Two-Evidence Attribution Protocol**: Cases are marked `RECOVERED` only when both signals correlate within a 30-minute reconciliation window:
   1. `payment.captured` webhook from Razorpay
   2. Provider Payment Link status transitions to `paid` matching reference ID
-- **Measured Batch Recovery Analytics**: Live database aggregation computing verified money recovered, recovery conversion rates, policy block rates, and mean time to recover.
+- **Measured Batch Recovery Analytics**: Live database aggregation computing verified money recovered, recovery conversion rates, policy block rates, and mean time to recover across the current Test Mode dataset.
 - **Offline Counterfactual Evaluation**: 3-arm synthetic simulation (`NO_ACTION`, `GENERIC_REMINDER`, `RETRYPAY_POLICY`) calculating causal conversion lift, incremental GMV, and contact efficiency.
 - **Operator Console**: Clean, dark/light financial-operations dashboard built with React and Vite.
 
@@ -31,14 +31,14 @@
 flowchart LR
     A["Inbound Webhook\n(payment.failed)"] --> B["HMAC Verifier\n(SHA-256)"]
     B --> C["Event Store\n(Idempotent Dedup)"]
-    C --> D["Enrichment &\nContext Lookup"]
     D --> E["Deterministic\nPolicy Engine"]
+    C --> D["Enrichment &\nContext Lookup"]
     E -->|Eligible| F["ROS Scorer\n(0-100)"]
     E -->|Consent Missing / Fraud| G["MANUAL_REVIEW /\nCLOSED_BLOCKED"]
     E -->|Quiet Hours| H["DEFERRED\n(Scheduled)"]
     F --> I["Payment Link\nProvider"]
     I --> J["Operator Preview &\nSingle-Use Token"]
-    J --> K["Outreach\n(SMS/Email)"]
+    J --> K["Simulated Outreach\n(Test Mode)"]
     L["Paid Webhook\n(payment.captured)"] --> M["Two-Evidence\nReconciliation"]
     M --> N["State:\nRECOVERED"]
 ```

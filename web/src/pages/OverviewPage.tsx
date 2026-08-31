@@ -105,7 +105,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onSelectCase }) => {
                 Measured Batch Recovery Results
               </h2>
               <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
-                Live database aggregation across all ingested payment attempts and reconciled recoveries.
+                Verified within the current Test Mode/demo dataset; not production merchant revenue.
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -265,7 +265,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onSelectCase }) => {
             </div>
           </div>
           <div className="stat-value">{stats.simulated_notifications_count}</div>
-          <div className="stat-subtitle">Simulated WhatsApp messages</div>
+          <div className="stat-subtitle">Test-only dispatch events recorded by the recovery workflow.</div>
         </div>
       </div>
 

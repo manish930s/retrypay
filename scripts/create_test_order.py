@@ -103,7 +103,7 @@ async def create_test_order(amount_paise: int = 250000, currency: str = "INR") -
     print(f"  • Order ID: {actual_order_id}")
     print(f"  • Status:   {OrderStatus.ATTEMPTED.value}")
     print(f"  • Amount:   ₹{amount_paise / 100:.2f} {currency}")
-    print(f"\n👉 Open Checkout Page to Test:")
+    print("\n👉 Open Checkout Page to Test:")
     print(f"   http://localhost:8000/checkout?order_id={actual_order_id}")
     return 0
 
