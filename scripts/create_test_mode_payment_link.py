@@ -9,6 +9,10 @@ import asyncio
 import sys
 import uuid
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
+
+# Ensure project root is in sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from retrypay.adapters.razorpay.payment_links import (
     CreatePaymentLinkRequest,

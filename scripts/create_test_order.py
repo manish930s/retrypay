@@ -5,6 +5,10 @@ import asyncio
 import sys
 import uuid
 from datetime import UTC, datetime
+from pathlib import Path
+
+# Ensure project root is in sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import httpx
 
@@ -93,6 +97,7 @@ async def create_test_order(amount_paise: int = 250000, currency: str = "INR") -
         )
         await order_repo.save_order(order, source=EventSource.RAZORPAY_TEST_MODE.value)
         await session.commit()
+    await engine.dispose()
 
     print("\n[SUCCESS] Order persisted to database.")
     print(f"  • Order ID: {actual_order_id}")
